@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pythagix"
+version = "0.1.4"
+description = "A mathy Python package with utilities like LCM, triangle numbers, etc."
+readme = "README.md"
+requires-python = ">=3.6"
+authors = [
+    { name = "UltraQuantumScriptor" }
+]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+dependencies = []
