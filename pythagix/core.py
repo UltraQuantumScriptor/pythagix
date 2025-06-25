@@ -1,93 +1,101 @@
-def filter_prime(number_list: list[int]) -> list[int]:
-    """
-    Returns a list of all prime numbers from a given list.
+from math import isqrt
+from functools import reduce
+from typing import List
+import math
 
-    Args:
-        number_list (list[int]): The list of integers to check.
-
-    Returns:
-        list[int]: A list containing only the prime numbers from the input.
-    """
-    prime_number: list[int] = []
-    for x in number_list:
-        if x == 1:
-            continue
-        for y in range(2, int(x * 1 / 2 + 1)):
-            if x % y == 0:
-                break
-        else:
-            prime_number.append(x)
-    return prime_number
+__all__ = [
+    "is_prime",
+    "filter_primes",
+    "nth_prime",
+    "gcd",
+    "is_perfect_square",
+    "count_factors",
+    "triangle_number",
+]
 
 
 def is_prime(number: int) -> bool:
     """
-    Checks whether a number is a prime number.
+    Check whether a given integer is a prime number.
 
     Args:
         number (int): The number to check.
 
     Returns:
-        bool: True if the number is prime, False otherwise.
+        bool: True if number is prime, False otherwise.
     """
-    for y in range(2, int(number * 1 / 2)):
-        if number % y == 0:
-            return False
-    else:
+    if number <= 1:
+        return False
+    if number == 2:
         return True
+    if number % 2 == 0:
+        return False
+    for i in range(3, isqrt(number) + 1, 2):
+        if number % i == 0:
+            return False
+    return True
 
 
-def nth_prime(index: int) -> int:
+def filter_primes(values: List[int]) -> List[int]:
     """
-    Returns the n-th prime number (1-indexed).
+    Filter and return the prime numbers from a list.
 
     Args:
-        index (int): The position of the prime to find.
+        values (List[int]): A list of integers.
 
     Returns:
-        int: The n-th prime number.
+        List[int]: A list containing only the prime numbers.
+    """
+    return [num for num in values if is_prime(num)]
+
+
+def nth_prime(position: int) -> int:
+    """
+    Get the N-th prime number (1-based index).
+
+    Args:
+        position (int): The index (1-based) of the prime number to find.
+
+    Returns:
+        int: The N-th prime number.
 
     Raises:
-        ValueError: If index is less than 1.
+        ValueError: If position < 1.
     """
-    if index < 1:
-        raise ValueError("Index must be >= 1")
+    if position < 1:
+        raise ValueError("Position must be >= 1")
 
-    count: int = 0
-    prime_number: int = 2
+    count = 0
+    candidate = 2
     while True:
-        if is_prime(prime_number):
+        if is_prime(candidate):
             count += 1
-            if count == index:
-                return prime_number
-        prime_number += 1
+            if count == position:
+                return candidate
+        candidate += 1
 
 
-def gcd(number_list: list[int]) -> int:
+def gcd(values: List[int]) -> int:
     """
-    Returns the greatest common divisor (GCD) of a list of integers.
+    Compute the greatest common divisor (GCD) of a list of integers.
 
     Args:
-        number_list (list[int]): The list of integers.
+        values (List[int]): A list of integers.
 
     Returns:
-        int: The greatest number that divides all elements in the list.
+        int: The GCD of the numbers.
+
+    Raises:
+        ValueError: If the list is empty.
     """
-    num: int = 2
-    highest: int = 0
-    while num <= min(number_list):
-        for number in number_list:
-            if number % num != 0:
-                break
-        else:
-            highest = num
-        num += 1
-    return highest
+    if not values:
+        raise ValueError("Input list must not be empty")
+    return reduce(math.gcd, values)
 
 
 def is_perfect_square(number: int) -> bool:
     """
-    Checks whether a number is a perfect square.
+    Check whether a number is a perfect square.
 
     Args:
         number (int): The number to check.
@@ -95,50 +103,58 @@ def is_perfect_square(number: int) -> bool:
     Returns:
         bool: True if the number is a perfect square, False otherwise.
     """
-    num: int = 0
-    while num <= number:
-        if num**2 == number:
-            return True
-        num += 1
-    return False
+    if number < 0:
+        return False
+    root = isqrt(number)
+    return root * root == number
 
 
-def count_factors(number: int) -> list[int]:
+def count_factors(number: int) -> List[int]:
     """
-    Returns a list of all factors (divisors) of a number.
+    Return all positive factors of a number.
 
     Args:
-        number (int): The number to find factors of.
+        number (int): The number whose factors are to be found.
 
     Returns:
-        list[int]: A list of all positive integers that divide the number evenly.
+        List[int]: A sorted list of factors.
+
+    Raises:
+        ValueError: If number is not positive.
     """
-    num: int = 1
-    factors: list[int] = []
-    while num <= number:
-        if number % num == 0:
-            factors.append(num)
-        num += 1
-    return factors
+    if number <= 0:
+        raise ValueError("Number must be positive")
+
+    factors = set()
+    for i in range(1, isqrt(number) + 1):
+        if number % i == 0:
+            factors.add(i)
+            factors.add(number // i)
+    return sorted(factors)
 
 
-def triangle_number(number: int) -> int:
+def triangle_number(index: int) -> int:
     """
-    Returns the n-th triangle number.
+    Calculate the N-th triangular number.
 
     Args:
-        number (int): The term (n) of the triangle number sequence.
+        index (int): The position (starting from 0) in the triangular number sequence.
 
     Returns:
-        int: The n-th triangle number, calculated as n(n+1)//2.
+        int: The N-th triangular number.
+
+    Raises:
+        ValueError: If index is negative.
     """
-    return number * (number + 1) // 2
+    if index < 0:
+        raise ValueError("Index must be >= 0")
+    return index * (index + 1) // 2
+
+
+def main() -> None:
+    """Tester Function."""
+    ...
 
 
 if __name__ == "__main__":
-
-    def main():
-        """Runs a quick test of any function."""
-        print(triangle_number(10))
-
     main()

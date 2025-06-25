@@ -1,6 +1,6 @@
 # pythagix/__init__.py
 from .core import (
-    prime_list,
+    filter_primes,
     is_prime,
     nth_prime,
     gcd,

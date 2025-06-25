@@ -1,42 +1,88 @@
-# 🧠 pythagix
+---
 
-Math utilities for number nerds.  
-Check primes, compute triangle numbers, find GCDs — all in one lightweight package.  
-Because math shouldn't be a pain 🧮✨
+# 📦 Pythagix
+
+**Pythagix** is a lightweight and dependency-free Python library designed for number theory operations.
+It provides a clean, efficient interface to common mathematical utilities such as prime number checks, greatest common divisor computation, triangular numbers, and more.
 
 ---
 
-## 📦 Installation
+## 📥 Installation
+
+Install Pythagix using pip:
 
 ```bash
 pip install pythagix
 ```
 
-⚙️ Features
+---
 
-🔢 is_prime(number) — Check if a number is prime
+## Features
 
-📜 prime_list([list]) — Return all primes in a list
+* `is_prime(number: int) -> bool`
+  Determine whether a number is a prime number.
 
-🔎 nth_prime(n) — Get the n-th prime number
+* `filter_primes(numbers: List[int]) -> List[int]`
+  Return all prime numbers from a list of integers.
 
-🤝 gcd([list]) — Greatest common divisor of a list
+* `nth_prime(position: int) -> int`
+  Retrieve the *n*-th prime number (1-based indexing).
 
-📏 is_perfect_square(n) — Check if n is a perfect square
+* `gcd(values: List[int]) -> int`
+  Compute the greatest common divisor (GCD) of a list of integers.
 
-🧱 count_factors(n) — Get all factors of a number
+* `is_perfect_square(number: int) -> bool`
+  Check whether a number is a perfect square.
 
-🔺 triangle_number(n) — Get the n-th triangle number
+* `count_factors(number: int) -> List[int]`
+  Return a sorted list of all positive factors of a number.
 
-🧪 Examples
+* `triangle_number(index: int) -> int`
+  Compute the *n*-th triangular number.
+
+---
+
+## Example Usage
+
 ```python
 from pythagix import is_prime, nth_prime, gcd, triangle_number
 
-print(is_prime(13))        # True
-print(nth_prime(10))       # 29
-print(gcd([12, 18, 24]))   # 6
-print(triangle_number(7))  # 28
+print(is_prime(13))         # Output: True
+
+print(nth_prime(10))        # Output: 29
+
+print(gcd([12, 18, 24]))    # Output: 6
+
+print(triangle_number(7))   # Output: 28
 ```
 
-📚 Why?
-pythagix was built to give math students, coders, and tinkerers a fast and fun way to explore number theory in Python. No heavy dependencies. Just pure mathy goodness.
+---
+
+## Use Cases
+
+Pythagix is ideal for:
+
+* Educational platforms and math-related tools
+
+* Prototyping algorithms and number-theoretic computations
+
+* Teaching foundational concepts in discrete mathematics and number theory
+
+* Lightweight CLI utilities and academic scripting
+
+---
+
+## License
+
+Pythagix is released under the [MIT License](LICENSE), making it free to use, modify, and distribute.
+
+---
+
+## Contributing
+
+Contributions are welcome!
+If you'd like to add features, report bugs, or improve documentation, please open an issue or submit a pull request on the [GitHub repository](https://github.com/your-username/pythagix).
+
+---
+
+If you want me to tailor this even more (e.g. add badges, GitHub Actions, versioning, or PyPI metadata snippets), I can assist with that too.
