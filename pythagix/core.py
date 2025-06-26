@@ -1,15 +1,18 @@
-from math import isqrt
+import math as m
 from functools import reduce
 from typing import List
-import math
 
 __all__ = [
-    "is_prime",
+    "count_factors",
+    "digit_sum",
     "filter_primes",
-    "nth_prime",
     "gcd",
     "is_perfect_square",
-    "count_factors",
+    "is_prime",
+    "is_multiple",
+    "lcm",
+    "middle",
+    "nth_prime",
     "triangle_number",
 ]
 
@@ -30,7 +33,7 @@ def is_prime(number: int) -> bool:
         return True
     if number % 2 == 0:
         return False
-    for i in range(3, isqrt(number) + 1, 2):
+    for i in range(3, m.isqrt(number) + 1, 2):
         if number % i == 0:
             return False
     return True
@@ -90,7 +93,7 @@ def gcd(values: List[int]) -> int:
     """
     if not values:
         raise ValueError("Input list must not be empty")
-    return reduce(math.gcd, values)
+    return reduce(m.gcd, values)
 
 
 def is_perfect_square(number: int) -> bool:
@@ -105,7 +108,7 @@ def is_perfect_square(number: int) -> bool:
     """
     if number < 0:
         return False
-    root = isqrt(number)
+    root = m.isqrt(number)
     return root * root == number
 
 
@@ -126,7 +129,7 @@ def count_factors(number: int) -> List[int]:
         raise ValueError("Number must be positive")
 
     factors = set()
-    for i in range(1, isqrt(number) + 1):
+    for i in range(1, m.isqrt(number) + 1):
         if number % i == 0:
             factors.add(i)
             factors.add(number // i)
@@ -151,9 +154,72 @@ def triangle_number(index: int) -> int:
     return index * (index + 1) // 2
 
 
+def lcm(values: List[int]) -> int:
+    """
+    Compute the least common multiple (LCM) of a list of integers.
+
+    Args:
+        values (List[int]): A list of integers.
+
+    Returns:
+        int: The LCM of the numbers.
+
+    Raises:
+        ValueError: If the list is empty.
+    """
+    if not values:
+        raise ValueError("Input list must not empty")
+
+    return reduce(m.lcm, values)
+
+
+def digit_sum(number: int) -> int:
+    """
+    Sum all digits that are in the given number
+
+    Args:
+        number (int): The number whose digits are to be summed.
+
+    Returns:
+        int: The sum of the digits in the number
+    """
+
+    return sum([int(digit) for digit in str(number)])
+
+
+def is_multiple(number: int, base: int) -> bool:
+    """
+    Check if a number is a multiple of another number.
+
+    Args:
+        n (int): The number to test.
+        base (int): The base to check against.
+
+    Returns:
+        bool: True if n is a multiple of base, False otherwise.
+    """
+
+    return number % base == 0
+
+
+def middle(a: int | float, b: int | float) -> float:
+    """
+    Return the midpoint between two numbers.
+
+    Args:
+        a (float): The first number.
+        b (float): The second number.
+
+    Returns:
+        float: The average of the two numbers.
+    """
+
+    return (a + b) / 2
+
+
 def main() -> None:
     """Tester Function."""
-    ...
+    print(middle(246, 2))
 
 
 if __name__ == "__main__":
