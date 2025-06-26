@@ -1,10 +1,14 @@
 # pythagix/__init__.py
 from .core import (
+    count_factors,
+    digit_sum,
     filter_primes,
-    is_prime,
-    nth_prime,
     gcd,
     is_perfect_square,
-    count_factors,
+    is_prime,
+    is_multiple,
+    lcm,
+    middle,
+    nth_prime,
     triangle_number,
 )

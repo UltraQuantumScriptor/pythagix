@@ -2,7 +2,7 @@
 
 # Pythagix
 
-**Pythagix** is a lightweight and dependency-free Python library designed for number theory operations.
+Pythagix is a lightweight and dependency-free Python library designed for number theory operations.
 It provides a clean, efficient interface to common mathematical utilities such as prime number checks, greatest common divisor computation, triangular numbers, and more.
 
 ---
@@ -71,13 +71,13 @@ print(triangle_number(7))   # Output: 28
 
 Pythagix is ideal for:
 
-* Educational platforms and math-related tools
+Educational platforms and math-related tools
 
-* Prototyping algorithms and number-theoretic computations
+Prototyping algorithms and number-theoretic computations
 
-* Teaching foundational concepts in discrete mathematics and number theory
+Teaching foundational concepts in discrete mathematics and number theory
 
-* Lightweight CLI utilities and academic scripting
+Lightweight CLI utilities and academic scripting
 
 ---
 
