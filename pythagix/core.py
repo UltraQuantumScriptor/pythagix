@@ -1,6 +1,9 @@
 import math as m
 from functools import reduce
-from typing import List
+from typing import List, Union
+from collections import Counter
+
+Numeric = Union[int, float]
 
 __all__ = [
     "count_factors",
@@ -11,7 +14,10 @@ __all__ = [
     "is_prime",
     "is_multiple",
     "lcm",
+    "mean",
+    "median",
     "middle",
+    "mode",
     "nth_prime",
     "triangle_number",
 ]
@@ -25,7 +31,7 @@ def is_prime(number: int) -> bool:
         number (int): The number to check.
 
     Returns:
-        bool: True if number is prime, False otherwise.
+        bool: True if the number is prime, False otherwise.
     """
     if number <= 1:
         return False
@@ -123,7 +129,7 @@ def count_factors(number: int) -> List[int]:
         List[int]: A sorted list of factors.
 
     Raises:
-        ValueError: If number is not positive.
+        ValueError: If the number is not positive.
     """
     if number <= 0:
         raise ValueError("Number must be positive")
@@ -147,7 +153,7 @@ def triangle_number(index: int) -> int:
         int: The N-th triangular number.
 
     Raises:
-        ValueError: If index is negative.
+        ValueError: If the index is negative.
     """
     if index < 0:
         raise ValueError("Index must be >= 0")
@@ -168,23 +174,22 @@ def lcm(values: List[int]) -> int:
         ValueError: If the list is empty.
     """
     if not values:
-        raise ValueError("Input list must not empty")
+        raise ValueError("Input list must not be empty")
 
     return reduce(m.lcm, values)
 
 
 def digit_sum(number: int) -> int:
     """
-    Sum all digits that are in the given number
+    Sum all digits of the given number.
 
     Args:
         number (int): The number whose digits are to be summed.
 
     Returns:
-        int: The sum of the digits in the number
+        int: The sum of the digits in the number.
     """
-
-    return sum([int(digit) for digit in str(number)])
+    return sum(int(digit) for digit in str(number))
 
 
 def is_multiple(number: int, base: int) -> bool:
@@ -192,35 +197,110 @@ def is_multiple(number: int, base: int) -> bool:
     Check if a number is a multiple of another number.
 
     Args:
-        n (int): The number to test.
+        number (int): The number to test.
         base (int): The base to check against.
 
     Returns:
-        bool: True if n is a multiple of base, False otherwise.
+        bool: True if number is a multiple of base, False otherwise.
     """
-
     return number % base == 0
 
 
-def middle(a: int | float, b: int | float) -> float:
+def middle(a: Numeric, b: Numeric) -> float:
     """
     Return the midpoint between two numbers.
 
     Args:
-        a (float): The first number.
-        b (float): The second number.
+        a (int | float): The first number.
+        b (int | float): The second number.
 
     Returns:
         float: The average of the two numbers.
     """
-
     return (a + b) / 2
 
 
-def main() -> None:
-    """Tester Function."""
-    print(middle(246, 2))
+def mean(values: List[Numeric]) -> float:
+    """
+    Calculate the mean (average) of a list of numbers.
+
+    Args:
+        values (List[int | float]): A list of integers or floats.
+
+    Returns:
+        float: The mean of the list.
+
+    Raises:
+        ValueError: If the input list is empty.
+    """
+    if not values:
+        raise ValueError("Must contain at least one data point")
+
+    total = 0
+    for number in values:
+        total += number
+
+    return total / len(values)
+
+
+def median(values: List[Numeric]) -> float:
+    """
+    Calculate the median of a list of numbers.
+
+    Args:
+        values (List[int | float]): A list of integers or floats.
+
+    Returns:
+        float: The median of the list.
+
+    Raises:
+        ValueError: If the input list is empty.
+    """
+    if not values:
+        raise ValueError("Must contain at least one data point")
+
+    values = sorted(values)
+    length = len(values)
+    mid = length // 2
+
+    if length % 2 == 1:
+        return float(values[mid])
+    else:
+        return middle(values[mid - 1], values[mid])
+
+
+def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
+    """
+    Compute the mode(s) of a list of numeric values.
+
+    The mode is the number that appears most frequently in the list.
+    If multiple numbers have the same highest frequency, all such numbers are returned as a list.
+    If only one number has the highest frequency, that single value is returned.
+
+    Args:
+        values (List[int | float]): A list of integers or floats.
+
+    Returns:
+        int | float | List[int | float]:
+            The mode of the list. Returns a single value if there's one mode,
+            or a list of values if multiple modes exist.
+
+    Raises:
+        ValueError: If the input list is empty.
+    """
+    if not values:
+        raise ValueError("Input list must not be empty")
+
+    frequency = Counter(values)
+    highest = max(frequency.values())
+    modes = [number for number, count in frequency.items() if count == highest]
+
+    return modes[0] if len(modes) == 1 else modes
 
 
 if __name__ == "__main__":
+
+    def main() -> None:
+        """Tester Function."""
+
     main()
