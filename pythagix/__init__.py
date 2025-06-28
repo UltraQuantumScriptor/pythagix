@@ -8,7 +8,10 @@ from .core import (
     is_prime,
     is_multiple,
     lcm,
+    mean,
+    median,
     middle,
+    mode,
     nth_prime,
     triangle_number,
 )
