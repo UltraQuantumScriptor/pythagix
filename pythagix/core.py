@@ -317,9 +317,9 @@ def from_percentage(percentage: Numeric) -> float:
     return percentage / 100
 
 
-def to_percentage(number: Numeric) -> float:
+def to_percentage(number: Numeric) -> Numeric:
     """
-    Convert the decimal to a percentage.
+    Convert a decimal to a percentage.
 
     Args:
         number (int | float): The part or value to convert into a percentage.
@@ -332,7 +332,7 @@ def to_percentage(number: Numeric) -> float:
 
 
 def simplify_ratio(ratio: Ratio) -> Ratio:
-    """ "
+    """
     Simplify a ratio by dividing both terms by their greatest common divisor (GCD).
 
     Args:

@@ -26,9 +26,14 @@ Returns the sum of all digits in the given number.
 filter_primes(values: List[int]) -> List[int]
 Filters and returns prime numbers from a list of integers.
 
-from_percentage(number: int | float) -> float:
+from_percentage(number: int | float) -> float
+Convert a percentage to a decimal.
+
 gcd(values: List[int]) -> int
 Computes the greatest common divisor (GCD) of a list of integers.
+
+is_equivalent(ratio1: tuple[int, int], ratio2: tuple[int, int]) -> bool
+Check if two ratios are equivalent by simplifying both and comparing.
 
 is_perfect_square(number: int) -> bool
 Determines whether a number is a perfect square.
@@ -56,6 +61,12 @@ Computes the mode(s) of a list. Returns a single value or a list of modes.
 
 nth_prime(position: int) -> int
 Retrieves the n-th prime number (1-based index).
+
+simplify_ratio(ratio: tuple[int, int]) -> tuple[int, int]
+Simplify a ratio by dividing both terms by their greatest common divisor (GCD).
+
+to_percentage(number: int | float) -> int | float
+Convert a decimal to a percentage.
 
 triangle_number(index: int) -> int
 Computes the n-th triangular number.
