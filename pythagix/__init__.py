@@ -3,7 +3,10 @@ from .core import (
     count_factors,
     digit_sum,
     filter_primes,
+    from_percentage,
     gcd,
+    is_equivalent,
+    is_equivalent,
     is_perfect_square,
     is_prime,
     is_multiple,
@@ -13,5 +16,7 @@ from .core import (
     middle,
     mode,
     nth_prime,
+    simplify_ratio,
     triangle_number,
+    to_percentage,
 )

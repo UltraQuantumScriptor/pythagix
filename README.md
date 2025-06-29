@@ -26,6 +26,7 @@ Returns the sum of all digits in the given number.
 filter_primes(values: List[int]) -> List[int]
 Filters and returns prime numbers from a list of integers.
 
+from_percentage(number: int | float) -> float:
 gcd(values: List[int]) -> int
 Computes the greatest common divisor (GCD) of a list of integers.
 

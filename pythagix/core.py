@@ -1,15 +1,18 @@
 import math as m
 from functools import reduce
-from typing import List, Union
+from typing import List, Tuple, Union
 from collections import Counter
 
 Numeric = Union[int, float]
+Ratio = Tuple[int, int]
 
 __all__ = [
     "count_factors",
     "digit_sum",
     "filter_primes",
+    "from_percentage",
     "gcd",
+    "is_equivalent",
     "is_perfect_square",
     "is_prime",
     "is_multiple",
@@ -19,6 +22,8 @@ __all__ = [
     "middle",
     "mode",
     "nth_prime",
+    "simplify_ratio",
+    "to_percentage",
     "triangle_number",
 ]
 
@@ -298,9 +303,67 @@ def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
     return modes[0] if len(modes) == 1 else modes
 
 
+def from_percentage(percentage: Numeric) -> float:
+    """
+    Convert the percentage to a decimal.
+
+    Args:
+        percentage (int | float): The percentage which is to be converted
+        to decimal.
+
+    Returns:
+        float: The decimal calculated from percentage.
+    """
+    return percentage / 100
+
+
+def to_percentage(number: Numeric) -> float:
+    """
+    Convert the decimal to a percentage.
+
+    Args:
+        number (int | float): The part or value to convert into a percentage.
+        total (int | float): The total or whole against which the percentage is calculated.
+
+    Returns:
+        float: The percentage of number relative to total.
+    """
+    return number * 100
+
+
+def simplify_ratio(ratio: Ratio) -> Ratio:
+    """ "
+    Simplify a ratio by dividing both terms by their greatest common divisor (GCD).
+
+    Args:
+        ratio (tuple[int, int]): A ratio represented as a tuple (a, b).
+
+    Returns:
+        tuple[int, int]: The simplified ratio with both values reduced.
+    """
+    a, b = ratio
+    g = m.gcd(a, b)
+    return (a // g, b // g)
+
+
+def is_equivalent(ratio1: Ratio, ratio2: Ratio) -> bool:
+    """
+    Check if two ratios are equivalent by simplifying both and comparing.
+
+    Args:
+        ratio1 (tuple[int, int]): The first ratio to compare.
+        ratio2 (tuple[int, int]): The second ratio to compare.
+
+    Returns:
+        bool: True if both ratios are equivalent, False otherwise.
+    """
+    return simplify_ratio(ratio1) == simplify_ratio(ratio2)
+
+
 if __name__ == "__main__":
 
     def main() -> None:
         """Tester Function."""
+        print(is_equivalent((2, 4), (1, 2)))
 
     main()
