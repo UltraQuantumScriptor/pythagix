@@ -1,0 +1,30 @@
+from typing import Union
+
+Numeric = Union[int, float]
+
+
+def from_percentage(percentage: Numeric) -> float:
+    """
+    Convert the percentage to a decimal.
+
+    Args:
+        percentage (int | float): The percentage which is to be converted
+        to decimal.
+
+    Returns:
+        float: The decimal calculated from percentage.
+    """
+    return percentage / 100
+
+
+def to_percentage(number: Numeric) -> Numeric:
+    """
+    Convert a decimal to a percentage.
+
+    Args:
+        number (int | float): The part or value to convert into a percentage.
+
+    Returns:
+        float: The percentage of number relative to total.
+    """
+    return number * 100

@@ -6,7 +6,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="pythagix",
-    version="0.2.7",
+    version="0.2.8",
     author="UltraQuantumScriptor",
     description="A mathy Python package with utilities like LCM, triangle numbers, etc.",
     long_description=long_description,
