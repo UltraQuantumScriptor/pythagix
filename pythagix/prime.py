@@ -1,3 +1,6 @@
+import math as m
+
+
 def is_prime(number: int) -> bool:
     """
     Check whether a given integer is a prime number.

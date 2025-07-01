@@ -4,7 +4,7 @@ from .utils import is_perfect_square, digit_sum, is_multiple, middle
 from .figurates import triangle_number
 from .percentage import to_percentage, from_percentage
 from .ratio import simplify_ratio, is_equivalent
-from .stat import mean, median, mode, variance
+from .stat import mean, median, mode, std_dev, variance
 
 __all__ = (
     # Numbers
@@ -32,5 +32,6 @@ __all__ = (
     "mean",
     "median",
     "mode",
+    "std_dev",
     "variance",
 )

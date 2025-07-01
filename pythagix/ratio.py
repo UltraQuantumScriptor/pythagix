@@ -1,6 +1,7 @@
-from typing import Union
+import math as m
+from typing import Union, Tuple
 
-Ratio = Union[int, int]
+Ratio = Tuple[int, int]
 
 
 def simplify_ratio(ratio: Ratio) -> Ratio:

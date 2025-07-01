@@ -1,6 +1,6 @@
 [project]
 name = "pythagix"
-version = "0.2.8"
+version = "0.2.9"
 description = "A mathy Python package with utilities like LCM, triangle numbers, etc."
 readme = "README.md"
 requires-python = ">=3.6"
@@ -13,6 +13,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 dependencies = []
-keywords = ["math", "prime", "LCM", "triangle numbers", "gcd", "utilities"]
+keywords = ["math", "prime", "LCM", "triangle numbers", "gcd", "statistics", "utilities"]
 urls = { "Homepage" = "https://github.com/UltraQuantumScriptor/pythagix", "Source" = "https://github.com/UltraQuantumScriptor/pythagix", "Bug Tracker" = "https://github.com/UltraQuantumScriptor/pythagix/issues" }
 

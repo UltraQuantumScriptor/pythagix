@@ -1,7 +1,8 @@
-from collections import Counter
 import math as m
-from .utils import middle
+from collections import Counter
 from typing import Union
+from functools import reduce
+from .utils import middle
 
 Numeric = Union[int, float]
 
@@ -87,3 +88,7 @@ def mode(values: list[Numeric]) -> Union[Numeric, list[Numeric]]:
 def variance(values: list[float]) -> float:
     mean_val = sum(values) / len(values)
     return sum((x - mean_val) ** 2 for x in values) / len(values)
+
+
+def std_dev(values: list[float]) -> float:
+    return m.sqrt(variance(values))
