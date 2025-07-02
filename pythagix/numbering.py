@@ -61,3 +61,11 @@ def count_factors(number: int) -> list[int]:
             factors.add(i)
             factors.add(number // i)
     return sorted(factors)
+
+
+def main() -> None:
+    print(count_factors(3))
+
+
+if __name__ == "__main__":
+    main()

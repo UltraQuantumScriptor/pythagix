@@ -28,3 +28,17 @@ def to_percentage(number: Numeric) -> Numeric:
         float: The percentage of number relative to total.
     """
     return number * 100
+
+
+def percentage_of(number: Numeric, percentage: Numeric) -> float:
+    """
+    Calculate the given percentage of a value.
+
+    Parameters:
+        value (float or int): The total number you want a percentage of.
+        percent (float or int): The percentage to calculate.
+
+    Returns:
+        float: The result of (percent / 100) * value.
+    """
+    return (number * percentage) / 100

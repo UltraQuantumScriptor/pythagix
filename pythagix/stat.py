@@ -86,9 +86,27 @@ def mode(values: list[Numeric]) -> Union[Numeric, list[Numeric]]:
 
 
 def variance(values: list[float]) -> float:
+    """
+    Work out the variance of the give list of numbers.
+
+    Args:
+        values (list[float]): a list of floats.
+
+    Return:
+        float: The variance of the list.
+    """
     mean_val = sum(values) / len(values)
     return sum((x - mean_val) ** 2 for x in values) / len(values)
 
 
 def std_dev(values: list[float]) -> float:
+    """
+    determine the standard deviation of the give list of numbers.
+
+    Args:
+        values (list[float]): a list of floats.
+
+    Return:
+        float: The standard deviation of the list.
+    """
     return m.sqrt(variance(values))

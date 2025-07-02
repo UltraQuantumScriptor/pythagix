@@ -1,4 +1,5 @@
 import math as m
+from numbering import count_factors
 
 
 def is_prime(number: int) -> bool:
@@ -52,11 +53,29 @@ def nth_prime(position: int) -> int:
     if position < 1:
         raise ValueError("Position must be >= 1")
 
-    count = 0
-    candidate = 2
+    count: int = 0
+    candidate: int = 2
     while True:
         if is_prime(candidate):
             count += 1
             if count == position:
                 return candidate
         candidate += 1
+
+
+def prime_factors(number: int) -> list[int]:
+    """
+    Get all positive prime factors of the number.
+
+    Args:
+        number (int): an integer whose factors are to be found.
+
+    Returns:
+        int: The prime factors.
+
+    Raises:
+        ValueError: If the number is not positive.
+    """
+    return sorted(
+        set([factors for factors in count_factors(number) if is_prime(factors)])
+    )
