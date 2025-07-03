@@ -1,5 +1,5 @@
 import math as m
-from numbering import count_factors
+from .numbering import count_factors
 
 
 def is_prime(number: int) -> bool:

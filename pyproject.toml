@@ -1,6 +1,6 @@
 [project]
 name = "pythagix"
-version = "0.2.11"
+version = "0.2.12"
 description = "A mathy Python package with utilities like LCM, triangle numbers, etc."
 readme = "README.md"
 requires-python = ">=3.6"
