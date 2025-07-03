@@ -76,6 +76,8 @@ def prime_factors(number: int) -> list[int]:
     Raises:
         ValueError: If the number is not positive.
     """
+    if number <= 0:
+        raise ValueError("Number must be positive")
     return sorted(
         set([factors for factors in count_factors(number) if is_prime(factors)])
     )

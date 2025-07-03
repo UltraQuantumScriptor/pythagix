@@ -1,5 +1,5 @@
-from .numbers import gcd, lcm, count_factors
-from .prime import is_prime, nth_prime, filter_primes
+from .numbering import gcd, lcm, count_factors
+from .prime import is_prime, nth_prime, filter_primes, prime_factors
 from .utils import is_perfect_square, digit_sum, is_multiple, middle
 from .figurates import triangle_number
 from .percentage import to_percentage, from_percentage
@@ -15,6 +15,7 @@ __all__ = (
     "is_prime",
     "nth_prime",
     "filter_primes",
+    "prime_factors",
     # Utilities
     "is_perfect_square",
     "digit_sum",
