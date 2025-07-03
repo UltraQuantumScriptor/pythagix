@@ -1,4 +1,5 @@
 import math as m
+from typing import List
 from .numbering import count_factors
 
 
@@ -24,15 +25,15 @@ def is_prime(number: int) -> bool:
     return True
 
 
-def filter_primes(values: list[int]) -> list[int]:
+def filter_primes(values: List[int]) -> List[int]:
     """
-    Filter and return the prime numbers from a list.
+    Filter and return the prime numbers from a List.
 
     Args:
-        values (List[int]): A list of integers.
+        values (List[int]): A List of integers.
 
     Returns:
-        List[int]: A list containing only the prime numbers.
+        List[int]: A List containing only the prime numbers.
     """
     return [num for num in values if is_prime(num)]
 
@@ -63,7 +64,7 @@ def nth_prime(position: int) -> int:
         candidate += 1
 
 
-def prime_factors(number: int) -> list[int]:
+def prime_factors(number: int) -> List[int]:
     """
     Get all positive prime factors of the number.
 

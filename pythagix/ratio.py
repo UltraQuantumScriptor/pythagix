@@ -1,5 +1,5 @@
 import math as m
-from typing import Union, Tuple
+from typing import Tuple
 
 Ratio = Tuple[int, int]
 
@@ -9,13 +9,13 @@ def simplify_ratio(ratio: Ratio) -> Ratio:
     Simplify a ratio by dividing both terms by their greatest common divisor (GCD).
 
     Args:
-        ratio (tuple[int, int]): A ratio represented as a tuple (a, b).
+        ratio (Tuple[int, int]): A ratio represented as a Tuple (a, b).
 
     Returns:
-        tuple[int, int]: The simplified ratio with both values reduced.
+        Tuple[int, int]: The simplified ratio with both values reduced.
     """
     a, b = ratio
-    g = m.gcd(a, b)
+    g: int = m.gcd(a, b)
     return (a // g, b // g)
 
 
@@ -24,8 +24,8 @@ def is_equivalent(ratio1: Ratio, ratio2: Ratio) -> bool:
     Check if two ratios are equivalent by simplifying both and comparing.
 
     Args:
-        ratio1 (tuple[int, int]): The first ratio to compare.
-        ratio2 (tuple[int, int]): The second ratio to compare.
+        ratio1 (Tuple[int, int]): The first ratio to compare.
+        ratio2 (Tuple[int, int]): The second ratio to compare.
 
     Returns:
         bool: True if both ratios are equivalent, False otherwise.

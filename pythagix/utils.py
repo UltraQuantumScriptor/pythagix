@@ -52,8 +52,8 @@ def middle(a: Numeric, b: Numeric) -> float:
     Return the midpoint between two numbers.
 
     Args:
-        a (int | float): The first number.
-        b (int | float): The second number.
+        a (Union[int, float]): The first number.
+        b (Union[int, float]): The second number.
 
     Returns:
         float: The average of the two numbers.
