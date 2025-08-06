@@ -17,8 +17,8 @@ pip install pythagix
 
 Features
 
-count_factors(number: int) -> list[int]
-Returns a sorted list of all positive factors of the given number.
+count_factors(number: int) -> int
+Returns the number of all positive divisors of the number.
 
 compress_0(values: int | float) -> list[int | float]
 Clears consecutive zeros, Keeping only one of the zero.
@@ -34,6 +34,9 @@ Convert a percentage to a decimal.
 
 gcd(values: list[int]) -> int
 Computes the greatest common divisor (GCD) of a list of integers.
+
+get_factors(number: int) -> List[int]
+Return all positive factors of a number.
 
 is_equivalent(ratio1: tuple[int, int], ratio2: tuple[int, int]) -> bool
 Check if two ratios are equivalent by simplifying both and comparing.

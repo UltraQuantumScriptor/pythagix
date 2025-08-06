@@ -68,7 +68,7 @@ def get_factors(number: int) -> List[int]:
 
 def count_factors(number: int) -> int:
     """
-    Returns the number of all positive divisors of the number
+    Returns the number of all positive divisors of the number.
 
     Args:
         number (int): the number whose divisors are to be counted.
