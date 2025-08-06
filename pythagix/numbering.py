@@ -1,6 +1,8 @@
 import math as m
 from functools import reduce
-from typing import List, Set
+from typing import List, Sequence, Set, Union
+
+Numeric = Union[int, float]
 
 
 def gcd(values: List[int]) -> int:
@@ -62,3 +64,27 @@ def count_factors(number: int) -> List[int]:
             factors.add(i)
             factors.add(number // i)
     return sorted(factors)
+
+
+def compress_0(values: Sequence[Numeric]) -> List[Numeric]:
+    """
+
+    Clears consecutive zeros, Keeping only one of the zero.
+
+    Args:
+        values (Union(int, float)): A list of integers of float.
+
+    Returns:
+        List[int, float]: The given list with compressed zeros.
+    """
+
+    if len(values) <= 0:
+        return []
+
+    compressed = [values[0]]
+    for i in range(1, len(values)):
+        if values[i] == 0 and compressed[-1] == 0:
+            continue
+        compressed.append(values[i])
+
+    return compressed

@@ -86,12 +86,12 @@ def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
     return modes[0] if len(modes) == 1 else modes
 
 
-def variance(values: List[float]) -> float:
+def variance(values: List[Numeric]) -> float:
     """
     Work out the variance of the give List of numbers.
 
     Args:
-        values (List[float]): a List of floats.
+        values (List[Union[int, float]]): a List of floats or integers.
 
     Return:
         float: The variance of the List.
@@ -100,12 +100,12 @@ def variance(values: List[float]) -> float:
     return sum((x - mean_val) ** 2 for x in values) / len(values)
 
 
-def std_dev(values: List[float]) -> float:
+def std_dev(values: List[Numeric]) -> float:
     """
     determine the standard deviation of the give List of numbers.
 
     Args:
-        values (List[float]): a List of floats.
+        values (List[Union[int, float]]): a List of floats or integers.
 
     Return:
         float: The standard deviation of the List.

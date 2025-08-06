@@ -20,6 +20,9 @@ Features
 count_factors(number: int) -> list[int]
 Returns a sorted list of all positive factors of the given number.
 
+compress_0(values: int | float) -> list[int | float]
+Clears consecutive zeros, Keeping only one of the zero.
+
 digit_sum(number: int) -> int
 Returns the sum of all digits in the given number.
 

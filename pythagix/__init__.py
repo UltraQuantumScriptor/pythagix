@@ -1,4 +1,4 @@
-from .numbering import gcd, lcm, count_factors
+from .numbering import gcd, lcm, count_factors, compress_0
 from .prime import is_prime, nth_prime, filter_primes, prime_factors
 from .utils import is_perfect_square, digit_sum, is_multiple, middle
 from .figurates import triangle_number
@@ -11,6 +11,7 @@ __all__ = (
     "gcd",
     "lcm",
     "count_factors",
+    "compress_0",
     # Primes
     "is_prime",
     "nth_prime",
