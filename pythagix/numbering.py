@@ -42,7 +42,7 @@ def lcm(values: List[int]) -> int:
     return reduce(m.lcm, values)
 
 
-def count_factors(number: int) -> List[int]:
+def get_factors(number: int) -> List[int]:
     """
     Return all positive factors of a number.
 
@@ -64,6 +64,20 @@ def count_factors(number: int) -> List[int]:
             factors.add(i)
             factors.add(number // i)
     return sorted(factors)
+
+
+def count_factors(number: int) -> int:
+    """
+    Returns the number of all positive divisors of the number
+
+    Args:
+        number (int): the number whose divisors are to be counted.
+
+    Returns:
+        int: the number of divisors.
+    """
+
+    return len(get_factors(number))
 
 
 def compress_0(values: Sequence[Numeric]) -> List[Numeric]:
