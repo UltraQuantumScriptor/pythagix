@@ -27,6 +27,7 @@ __all__ = (
     # Percentages
     "to_percentage",
     "from_percentage",
+    "percentage_of",
     # Ratios
     "simplify_ratio",
     "is_equivalent",
