@@ -71,11 +71,20 @@ Retrieves the n-th prime number (1-based index).
 prime_factors(number: int) -> list[int]
 Get all prime factors of the given number.
 
+product(values: Sequence[int | float]) -> int | float
+Multiplies the entire list until one number remains.
+
+pstd_dev(values: Sequence[int | float]) -> float
+Determine the standard deviation of the values(population).
+
+pvariance(values: Sequence[int | float]) -> float
+Work out the variance of the values(population).
+
 simplify_ratio(ratio: tuple[int, int]) -> tuple[int, int]
 Simplify a ratio by dividing both terms by their greatest common divisor (GCD).
 
-std_dev(values: list[float]) -> float
-Determine the standard deviation of the values
+std_dev(values: list[int | float]) -> float
+Determine the standard deviation of the values(sample).
 
 to_percentage(number: int | float) -> int | float
 Convert a decimal to a percentage.
@@ -83,8 +92,8 @@ Convert a decimal to a percentage.
 triangle_number(index: int) -> int
 Computes the n-th triangular number.
 
-variance(values: list[float]) -> float
-Work out the variance of the values.
+variance(values: list[int | float]) -> float
+Work out the variance of the values(sample).
 
 Use Cases
 

@@ -1,5 +1,5 @@
 import math as m
-from typing import Union
+from typing import List, Union
 
 Numeric = Union[int, float]
 
@@ -45,17 +45,3 @@ def is_multiple(number: int, base: int) -> bool:
         bool: True if number is a multiple of base, False otherwise.
     """
     return number % base == 0
-
-
-def middle(a: Numeric, b: Numeric) -> float:
-    """
-    Return the midpoint between two numbers.
-
-    Args:
-        a (Union[int, float]): The first number.
-        b (Union[int, float]): The second number.
-
-    Returns:
-        float: The average of the two numbers.
-    """
-    return (a + b) / 2
