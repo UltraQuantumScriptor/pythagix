@@ -1,10 +1,11 @@
 import math as m
-from functools import reduce
+from functools import lru_cache, reduce
 from typing import List, Sequence, Set, Union
 
 Numeric = Union[int, float]
 
 
+@lru_cache(maxsize=None)
 def gcd(values: List[int]) -> int:
     """
     Compute the greatest common divisor (GCD) of a List of integers.
@@ -23,6 +24,7 @@ def gcd(values: List[int]) -> int:
     return reduce(m.gcd, values)
 
 
+@lru_cache(maxsize=None)
 def lcm(values: List[int]) -> int:
     """
     Compute the least common multiple (LCM) of a List of integers.
@@ -42,6 +44,7 @@ def lcm(values: List[int]) -> int:
     return reduce(m.lcm, values)
 
 
+@lru_cache(maxsize=None)
 def get_factors(number: int) -> List[int]:
     """
     Return all positive factors of a number.
@@ -66,20 +69,7 @@ def get_factors(number: int) -> List[int]:
     return sorted(factors)
 
 
-def count_factors(number: int) -> int:
-    """
-    Returns the number of all positive divisors of the number.
-
-    Args:
-        number (int): the number whose divisors are to be counted.
-
-    Returns:
-        int: the number of divisors.
-    """
-
-    return len(get_factors(number))
-
-
+@lru_cache(maxsize=None)
 def compress_0(values: Sequence[Numeric]) -> List[Numeric]:
     """
 

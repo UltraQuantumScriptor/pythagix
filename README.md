@@ -3,34 +3,20 @@
 Pythagix is a lightweight, dependency-free Python library for number theory operations.
 It provides a clean and efficient interface for common mathematical utilities such as prime checking, greatest common divisor, triangular numbers, and more.
 
----
-
-
 Installation
-
 You can install Pythagix using pip:
 
 ```bash
 pip install pythagix
 ```
 
-
 Features
 
-count_factors(number: int) -> int
-Returns the number of all positive divisors of the number.
-
 compress_0(values: int | float) -> list[int | float]
-Clears consecutive zeros, Keeping only one of the zero.
-
-digit_sum(number: int) -> int
-Returns the sum of all digits in the given number.
+Clears consecutive zeros, keeping only one of the zero.
 
 filter_primes(values: list[int]) -> list[int]
 Filters and returns prime numbers from a list of integers.
-
-from_percentage(number: int | float) -> float
-Convert a percentage to a decimal.
 
 gcd(values: list[int]) -> int
 Computes the greatest common divisor (GCD) of a list of integers.
@@ -41,14 +27,8 @@ Return all positive factors of a number.
 is_equivalent(ratio1: tuple[int, int], ratio2: tuple[int, int]) -> bool
 Check if two ratios are equivalent by simplifying both and comparing.
 
-is_perfect_square(number: int) -> bool
-Determines whether a number is a perfect square.
-
 is_prime(number: int) -> bool
 Checks whether a number is prime.
-
-is_multiple(number: int, base: int) -> bool
-Checks if one number is a multiple of another.
 
 lcm(values: list[int]) -> int
 Computes the least common multiple (LCM) of a list of integers.
@@ -58,9 +38,6 @@ Calculates the arithmetic mean (average) of a list of numbers.
 
 median(values: list[int | float]) -> float
 Computes the median value of a list.
-
-middle(a: int | float, b: int | float) -> float
-Returns the midpoint of two numeric values.
 
 mode(values: list[int | float]) -> int | float | list[int | float]
 Computes the mode(s) of a list. Returns a single value or a list of modes.
@@ -75,25 +52,22 @@ product(values: Sequence[int | float]) -> int | float
 Multiplies the entire list until one number remains.
 
 pstd_dev(values: Sequence[int | float]) -> float
-Determine the standard deviation of the values(population).
+Determine the standard deviation of the values (population).
 
 pvariance(values: Sequence[int | float]) -> float
-Work out the variance of the values(population).
+Work out the variance of the values (population).
 
 simplify_ratio(ratio: tuple[int, int]) -> tuple[int, int]
 Simplify a ratio by dividing both terms by their greatest common divisor (GCD).
 
 std_dev(values: list[int | float]) -> float
-Determine the standard deviation of the values(sample).
-
-to_percentage(number: int | float) -> int | float
-Convert a decimal to a percentage.
+Determine the standard deviation of the values (sample).
 
 triangle_number(index: int) -> int
 Computes the n-th triangular number.
 
 variance(values: list[int | float]) -> float
-Work out the variance of the values(sample).
+Work out the variance of the values (sample).
 
 Use Cases
 
@@ -106,7 +80,6 @@ Prototyping number-theoretic algorithms
 Teaching foundational concepts in discrete mathematics
 
 Lightweight command-line tools and academic scripting
-
 
 License
 

@@ -1,7 +1,9 @@
+from functools import lru_cache
 import math as m
 from typing import List
 
 
+@lru_cache(maxsize=None)
 def is_prime(number: int) -> bool:
     """
     Check whether a given integer is a prime number.
@@ -24,6 +26,7 @@ def is_prime(number: int) -> bool:
     return True
 
 
+@lru_cache(maxsize=None)
 def filter_primes(values: List[int], reverse: bool = False) -> List[int]:
     """
     Filter and return the prime numbers from a List.

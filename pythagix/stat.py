@@ -1,3 +1,4 @@
+from functools import lru_cache
 import math as m
 from collections import Counter
 from typing import Sequence, Union, List
@@ -139,6 +140,7 @@ def pstd_dev(values: Sequence[Numeric]) -> float:
     return m.sqrt(variance(values))
 
 
+@lru_cache(maxsize=None)
 def product(values: Sequence[Numeric]) -> Numeric:
     """
     Multiplies the entire list until one number remains.
