@@ -6,7 +6,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="pythagix",
-    version="0.2.19",
+    version="0.2.20",
     author="UltraQuantumScriptor",
     description="Pythagix is a lightweight Python library that provides a collection of mathematical utility functions for number theory",
     long_description=long_description,
