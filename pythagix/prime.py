@@ -70,11 +70,3 @@ def nth_prime(position: int) -> int:
             if count == position:
                 return candidate
         candidate += 1
-
-
-def prime_position(number: int) -> int:
-    pos: int = 1
-    while True:
-        if nth_prime(pos) == number:
-            return pos
-        pos += 1
