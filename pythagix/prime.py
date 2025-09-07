@@ -1,27 +1,44 @@
 from functools import lru_cache
 import math as m
+import random
 from typing import List
 
 
 @lru_cache(maxsize=None)
-def is_prime(number: int) -> bool:
+def is_prime(n: int, k=12) -> bool:
     """
     Check whether a given integer is a prime number.
 
     Args:
-        number (int): The number to check.
+        n (int): The number to check.
+        k (int): The number of rounds to check if the number is prime or not.
 
     Returns:
         bool: True if the number is prime, False otherwise.
     """
-    if number <= 1:
+
+    if n <= 1:
         return False
-    if number == 2:
+    if n <= 3:
         return True
-    if number % 2 == 0:
+    if n % 2 == 0:
         return False
-    for i in range(3, m.isqrt(number) + 1, 2):
-        if number % i == 0:
+
+    r, d = 0, n - 1
+    while d % 2 == 0:
+        r += 1
+        d //= 2
+
+    for _ in range(k):
+        a = random.randrange(2, n - 1)
+        x = pow(a, d, n)
+        if x == 1 or x == n - 1:
+            continue
+        for _ in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
             return False
     return True
 

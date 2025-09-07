@@ -60,8 +60,10 @@ def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
     Compute the mode(s) of a List of numeric values.
 
     The mode is the number that appears most frequently in the List.
-    If multiple numbers have the same highest frequency, all such numbers are returned as a List.
-    If only one number has the highest frequency, that single value is returned.
+    If multiple numbers have the same highest frequency,
+    all such numbers are returned as a List.
+    If only one number has the highest frequency, that single value is
+    returned.
 
     Args:
         values (List[Union[int, float]]): A List of integers or floats.
@@ -75,7 +77,7 @@ def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
         ValueError: If the input List is empty.
     """
     if not values:
-        raise ValueError("Input List must not be empty")
+        raise ValueError("Must contain at least one data point")
 
     frequency = Counter(values)
     highest: Numeric = max(frequency.values())
@@ -96,6 +98,8 @@ def variance(values: Sequence[Numeric]) -> float:
     Return:
         float: The variance of the List.
     """
+    if not values:
+        raise ValueError("Must contain at least one data point")
     mean_val = sum(values) / len(values)
     return sum((x - mean_val) ** 2 for x in values) / (len(values) - 1)
 
@@ -123,13 +127,16 @@ def pvariance(values: Sequence[Numeric]) -> float:
     Return:
         float: The variance of the List.
     """
+    if not values:
+        raise ValueError("Must contain at least one data point")
+
     mean_val = sum(values) / len(values)
     return sum((x - mean_val) ** 2 for x in values) / (len(values) - 1)
 
 
 def pstd_dev(values: Sequence[Numeric]) -> float:
     """
-    determine the standard deviation of the give List of numbers(population).
+    Determine the standard deviation of the give List of numbers(population).
 
     Args:
         values (List[Union[int, float]]): a List of floats or integers.
@@ -149,9 +156,10 @@ def product(values: Sequence[Numeric]) -> Numeric:
         values (List[Union[int, float]]): a List of floats or integer
 
     Return:
-        Union[int, float]:
+        Union[int, float]: The product of the numbers. Returns 1 if the given
+        list is empty
     """
-    if len(values) <= 0:
+    if not values:
         return 1
 
     result: Union[int, float] = values[0]

@@ -42,8 +42,14 @@ Computes the median value of a list.
 mode(values: list[int | float]) -> int | float | list[int | float]
 Computes the mode(s) of a list. Returns a single value or a list of modes.
 
+nCr(n: int, k: int) -> Union[int, float]
+Count all possible k items from n.
+
 nth_prime(position: int) -> int
 Retrieves the n-th prime number (1-based index).
+
+prime_factorization(number: int) -> Union[List[int], None]
+Find all prime factors of the given number.
 
 prime_factors(number: int) -> list[int]
 Get all prime factors of the given number.

@@ -1,11 +1,11 @@
 import math as m
 from functools import lru_cache, reduce
 from typing import List, Sequence, Set, Union
+from pythagix.prime import is_prime
 
 Numeric = Union[int, float]
 
 
-@lru_cache(maxsize=None)
 def gcd(values: List[int]) -> int:
     """
     Compute the greatest common divisor (GCD) of a List of integers.
@@ -24,7 +24,6 @@ def gcd(values: List[int]) -> int:
     return reduce(m.gcd, values)
 
 
-@lru_cache(maxsize=None)
 def lcm(values: List[int]) -> int:
     """
     Compute the least common multiple (LCM) of a List of integers.
@@ -92,3 +91,48 @@ def compress_0(values: Sequence[Numeric]) -> List[Numeric]:
         compressed.append(values[i])
 
     return compressed
+
+
+def nCr(n: int, k: int) -> Numeric:
+    """
+    Count all possible k items from n.
+
+    Args:
+        n (int): The number.
+        k (int): The amount of items to choose from n
+    """
+    if k > n - k:
+        k = n - k
+    result = 1
+    for i in range(1, k + 1):
+        result = result * (n - k + i) // i
+
+    return result
+
+
+def prime_factorization(number: int) -> Union[List[int], None]:
+    """
+    Find all prime factors of the given number.
+
+    Args:
+        number (int): The number whose factors are to be found.
+
+    Returns:
+        Union[List[int], None]: The prime factors found for number. returns
+        None if the number is prime.
+    """
+    if is_prime(number):
+        return None
+    n = 2
+    result = []
+    while number > 1:
+
+        if n > number:
+            n = 2
+        elif number % n == 0:
+            result.append(n)
+            number = number // n
+        else:
+            n += 1
+
+    return result
