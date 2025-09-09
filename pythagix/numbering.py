@@ -1,5 +1,7 @@
 import math as m
 from functools import lru_cache, reduce
+import random
+from timeit import timeit
 from typing import List, Sequence, Set, Union
 from pythagix.prime import is_prime
 
@@ -44,7 +46,7 @@ def lcm(values: List[int]) -> int:
 
 
 @lru_cache(maxsize=None)
-def get_factors(number: int) -> List[int]:
+def get_factors(n: int) -> List[int]:
     """
     Return all positive factors of a number.
 
@@ -57,15 +59,77 @@ def get_factors(number: int) -> List[int]:
     Raises:
         ValueError: If the number is not positive.
     """
-    if number <= 0:
-        raise ValueError("Number must be positive")
+    if n <= 1:
+        return []
 
-    factors: Set[int] = set()
-    for i in range(1, m.isqrt(number) + 1):
-        if number % i == 0:
-            factors.add(i)
-            factors.add(number // i)
-    return sorted(factors)
+    def is_probable_prime(n: int, k: int = 12) -> bool:
+        """Miller–Rabin primality test."""
+        if n < 2:
+            return False
+        # small primes quick check
+        small_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        for p in small_primes:
+            if n % p == 0:
+                return n == p
+        # write n-1 as d*2^s
+        d, s = n - 1, 0
+        while d % 2 == 0:
+            d //= 2
+            s += 1
+        for _ in range(k):
+            a = random.randrange(2, n - 1)
+            x = pow(a, d, n)
+            if x == 1 or x == n - 1:
+                continue
+            for _ in range(s - 1):
+                x = pow(x, 2, n)
+                if x == n - 1:
+                    break
+            else:
+                return False
+        return True
+
+    def pollard_rho(n: int) -> int:
+        """Pollard Rho with Brent’s cycle detection."""
+        if n % 2 == 0:
+            return 2
+        if n % 3 == 0:
+            return 3
+        while True:
+            y, c, block_size = (
+                random.randrange(2, n - 1),
+                random.randrange(1, n - 1),
+                128,
+            )
+            g, r, q = 1, 1, 1
+            x, ys = 0, 0
+            while g == 1:
+                x = y
+                for _ in range(r):
+                    y = (y * y + c) % n
+                k = 0
+                while k < r and g == 1:
+                    ys = y
+                    for _ in range(min(block_size, r - k)):
+                        y = (y * y + c) % n
+                        q = (q * abs(x - y)) % n
+                    g = m.gcd(q, n)
+                    k += block_size
+                r *= 2
+            if g == n:
+                while True:
+                    ys = (ys * ys + c) % n
+                    g = m.gcd(abs(x - ys), n)
+                    if g > 1:
+                        break
+            if g != n:
+                return g
+
+    # recursive factorization
+    if is_probable_prime(n):
+        return [n]
+    d = pollard_rho(n)
+    return get_factors(d) + get_factors(n // d)
 
 
 @lru_cache(maxsize=None)

@@ -101,7 +101,7 @@ def variance(values: Sequence[Numeric]) -> float:
     if not values:
         raise ValueError("Must contain at least one data point")
     mean_val = sum(values) / len(values)
-    return sum((x - mean_val) ** 2 for x in values) / (len(values) - 1)
+    return sum((x - mean_val) ** 2 for x in values) / (len(values))
 
 
 def std_dev(values: Sequence[Numeric]) -> float:

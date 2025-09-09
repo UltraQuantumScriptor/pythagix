@@ -1,29 +1,24 @@
-# 🍃 Python things we don't need to track
 __pycache__/
 *.py[cod]
 *.pyo
 
-# 🐍 Virtual environment folders (if you use venv, pipenv, poetry, etc.)
 venv/
 env/
 .venv/
 .env/
 
-# 📦 Build files
 build/
 dist/
 *.egg-info/
 
-# 🤖 IDE/editor files
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
+tempCodeRunnerFile
 
-# 🙈 OS-specific junk
 .DS_Store
 Thumbs.db
 
-# 🔒 Secrets (if any — like tokens or .env files)
 .env
 *.env
