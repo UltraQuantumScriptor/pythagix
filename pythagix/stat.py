@@ -22,11 +22,7 @@ def mean(values: List[Numeric]) -> float:
     if not values:
         raise ValueError("Must contain at least one data point")
 
-    total: float = 0.0
-    for number in values:
-        total += number
-
-    return total / len(values)
+    return sum(values) / len(values)
 
 
 def median(values: List[Numeric]) -> float:
@@ -59,7 +55,6 @@ def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
     """
     Compute the mode(s) of a List of numeric values.
 
-    The mode is the number that appears most frequently in the List.
     If multiple numbers have the same highest frequency,
     all such numbers are returned as a List.
     If only one number has the highest frequency, that single value is
@@ -90,28 +85,28 @@ def mode(values: List[Numeric]) -> Union[Numeric, List[Numeric]]:
 
 def variance(values: Sequence[Numeric]) -> float:
     """
-    Work out the variance of the give List of numbers(sample).
+    Work out the variance of the given List of numbers(sample).
 
     Args:
         values (List[Union[int, float]]): a List of floats or integers.
 
-    Return:
+    Returns:
         float: The variance of the List.
     """
     if not values:
         raise ValueError("Must contain at least one data point")
     mean_val = sum(values) / len(values)
-    return sum((x - mean_val) ** 2 for x in values) / (len(values))
+    return sum((x - mean_val) ** 2 for x in values) / (len(values) - 1)
 
 
 def std_dev(values: Sequence[Numeric]) -> float:
     """
-    determine the standard deviation of the give List of number(sample).
+    determine the standard deviation of the given List of number(sample).
 
     Args:
         values (List[Union[int, float]]): a List of floats or integers.
 
-    Return:
+    Returns:
         float: The standard deviation of the List.
     """
     return m.sqrt(variance(values))
@@ -119,35 +114,34 @@ def std_dev(values: Sequence[Numeric]) -> float:
 
 def pvariance(values: Sequence[Numeric]) -> float:
     """
-    Work out the variance of the give List of numbers(population).
+    Work out the variance of the given List of numbers(population).
 
     Args:
         values (List[Union[int, float]]): a List of floats or integers.
 
-    Return:
+    Returns:
         float: The variance of the List.
     """
     if not values:
         raise ValueError("Must contain at least one data point")
 
     mean_val = sum(values) / len(values)
-    return sum((x - mean_val) ** 2 for x in values) / (len(values) - 1)
+    return sum((x - mean_val) ** 2 for x in values) / (len(values))
 
 
 def pstd_dev(values: Sequence[Numeric]) -> float:
     """
-    Determine the standard deviation of the give List of numbers(population).
+    Determine the standard deviation of the given List of numbers(population).
 
     Args:
         values (List[Union[int, float]]): a List of floats or integers.
 
-    Return:
+    Returns:
         float: The standard deviation of the List.
     """
     return m.sqrt(variance(values))
 
 
-@lru_cache(maxsize=None)
 def product(values: Sequence[Numeric]) -> Numeric:
     """
     Multiplies the entire list until one number remains.
@@ -155,7 +149,7 @@ def product(values: Sequence[Numeric]) -> Numeric:
     Args:
         values (List[Union[int, float]]): a List of floats or integer
 
-    Return:
+    Returns:
         Union[int, float]: The product of the numbers. Returns 1 if the given
         list is empty
     """

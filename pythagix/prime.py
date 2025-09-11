@@ -1,11 +1,10 @@
 from functools import lru_cache
-import math as m
 import random
 from typing import List
 
 
 @lru_cache(maxsize=None)
-def is_prime(n: int, k=12) -> bool:
+def is_prime(n: int, k: int = 12) -> bool:
     """
     Check whether a given integer is a prime number.
 
@@ -17,13 +16,15 @@ def is_prime(n: int, k=12) -> bool:
         bool: True if the number is prime, False otherwise.
     """
 
-    if n <= 1:
-        return False
-    if n <= 3:
-        return True
-    if n % 2 == 0:
-        return False
+    SMALL_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
 
+    if n < 2:
+        return False
+    for p in SMALL_PRIMES:
+        if n % p == 0:
+            return n == p
+
+    # Write n-1 as 2^r * d
     r, d = 0, n - 1
     while d % 2 == 0:
         r += 1
@@ -32,7 +33,7 @@ def is_prime(n: int, k=12) -> bool:
     for _ in range(k):
         a = random.randrange(2, n - 1)
         x = pow(a, d, n)
-        if x == 1 or x == n - 1:
+        if x in (1, n - 1):
             continue
         for _ in range(r - 1):
             x = pow(x, 2, n)
@@ -43,24 +44,17 @@ def is_prime(n: int, k=12) -> bool:
     return True
 
 
-@lru_cache(maxsize=None)
-def filter_primes(values: List[int], reverse: bool = False) -> List[int]:
+def filter_primes(values: List[int]) -> List[int]:
     """
-    Filter and return the prime numbers from a List.
+    Filter a list of numbers, returning only the primes.
 
     Args:
-        values (List[int]): A List of integers.
-        reverse (bool = False): Sorts the list in descending order.
-            default as False
+        nums (list[int]): List of numbers to filter.
 
     Returns:
-        List[int]: A List containing only the prime numbers.
+        list[int]: List of primes.
     """
-    result = [num for num in values if is_prime(num)]
-
-    if not reverse:
-        return result
-    return result[::-1]
+    return [n for n in values if is_prime(n)]
 
 
 def nth_prime(position: int) -> int:
@@ -78,12 +72,21 @@ def nth_prime(position: int) -> int:
     """
     if position < 1:
         raise ValueError("Position must be >= 1")
+    if position == 1:
+        return 2
 
-    count: int = 0
-    candidate: int = 2
+    count = 1
+    candidate = 3
+
+    small_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+
     while True:
+        if any(candidate % p == 0 for p in small_primes if p < candidate):
+            candidate += 2
+            continue
+
         if is_prime(candidate):
             count += 1
             if count == position:
                 return candidate
-        candidate += 1
+        candidate += 2

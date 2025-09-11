@@ -14,6 +14,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 dependencies = []
-keywords = ["math", "prime", "LCM", "triangle numbers", "gcd", "statistics", "utilities"]
+keywords = ["math", "prime", "LCM", "triangle numbers", "gcd", "statistics", "utilities", "high-digit math"]
 urls = { "Homepage" = "https://github.com/UltraQuantumScriptor/pythagix", "Source" = "https://github.com/UltraQuantumScriptor/pythagix", "Bug Tracker" = "https://github.com/UltraQuantumScriptor/pythagix/issues" }
 
