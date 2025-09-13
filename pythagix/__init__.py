@@ -1,8 +1,12 @@
-from .numbering import gcd, lcm, compress_0, get_factors, nCr
-from .prime import is_prime, nth_prime, filter_primes
-from .figurates import triangle_number
+from .numbering import compress_0, get_factors, nCr
+from .prime import filter_primes
 from .ratio import simplify_ratio, is_equivalent
-from .stat import mean, median, mode, std_dev, variance, pstd_dev, pvariance, product
+from .stat import product
+
+from .pprime import is_prime, nth_prime
+from .figurates import triangle_number
+from .pnumbering import gcd, lcm
+from .pstat import mean, median, mode, std_dev, variance, pstd_dev, pvariance
 
 __all__ = (
     # Numbers

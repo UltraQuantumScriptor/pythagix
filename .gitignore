@@ -19,6 +19,14 @@ tempCodeRunnerFile
 
 .DS_Store
 Thumbs.db
-
 .env
 *.env
+
+*.exe
+*.dll
+*.pyd
+*.obj
+*.o
+*.so
+*.out
+/build/

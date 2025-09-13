@@ -140,24 +140,3 @@ def pstd_dev(values: Sequence[Numeric]) -> float:
         float: The standard deviation of the List.
     """
     return m.sqrt(variance(values))
-
-
-def product(values: Sequence[Numeric]) -> Numeric:
-    """
-    Multiplies the entire list until one number remains.
-
-    Args:
-        values (List[Union[int, float]]): a List of floats or integer
-
-    Returns:
-        Union[int, float]: The product of the numbers. Returns 1 if the given
-        list is empty
-    """
-    if not values:
-        return 1
-
-    result: Union[int, float] = values[0]
-
-    for num in values[1:]:
-        result *= num
-    return result

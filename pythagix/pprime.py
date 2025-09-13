@@ -16,10 +16,15 @@ def is_prime(n: int, k: int = 12) -> bool:
         bool: True if the number is prime, False otherwise.
     """
 
-    SMALL_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+    SMALL_PRIMES = list(range(3, 1000, 2))
 
     if n < 2:
         return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+
     for p in SMALL_PRIMES:
         if n % p == 0:
             return n == p
@@ -44,49 +49,21 @@ def is_prime(n: int, k: int = 12) -> bool:
     return True
 
 
-def filter_primes(values: List[int]) -> List[int]:
-    """
-    Filter a list of numbers, returning only the primes.
-
-    Args:
-        nums (list[int]): List of numbers to filter.
-
-    Returns:
-        list[int]: List of primes.
-    """
-    return [n for n in values if is_prime(n)]
-
-
+@lru_cache(maxsize=None)
 def nth_prime(position: int) -> int:
-    """
-    Get the N-th prime number (1-based index).
-
-    Args:
-        position (int): The index (1-based) of the prime number to find.
-
-    Returns:
-        int: The N-th prime number.
-
-    Raises:
-        ValueError: If position < 1.
-    """
     if position < 1:
         raise ValueError("Position must be >= 1")
+
     if position == 1:
         return 2
 
     count = 1
     candidate = 3
 
-    small_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-
     while True:
-        if any(candidate % p == 0 for p in small_primes if p < candidate):
-            candidate += 2
-            continue
-
         if is_prime(candidate):
             count += 1
             if count == position:
                 return candidate
+
         candidate += 2
