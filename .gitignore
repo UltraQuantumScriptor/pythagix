@@ -15,7 +15,7 @@ dist/
 .idea/
 *.sublime-project
 *.sublime-workspace
-tempCodeRunnerFile
+tempCodeRunnerFile.py
 
 .DS_Store
 Thumbs.db
