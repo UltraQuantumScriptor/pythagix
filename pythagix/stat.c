@@ -1,10 +1,8 @@
 #include <Python.h>
 
-// Python wrapper for product
 static PyObject* py_product(PyObject* self, PyObject* args) {
     PyObject* input_list;
 
-    // Parse a Python list argument
     if (!PyArg_ParseTuple(args, "O!", &PyList_Type, &input_list)) {
         return NULL;
     }
@@ -31,18 +29,16 @@ static PyObject* py_product(PyObject* self, PyObject* args) {
     return result;
 }
 
-// Method table
 static PyMethodDef StatMethods[] = {
     {"product", py_product, METH_VARARGS, "Multiply all numbers in a list. Returns 1 if empty."},
-    {NULL, NULL, 0, NULL}  // sentinel
+    {NULL, NULL, 0, NULL}
 };
 
-// Module definition
 static struct PyModuleDef statmodule = {
     PyModuleDef_HEAD_INIT,
-    "stat",   // module name
-    NULL,        // docstring
-    -1,          // global state
+    "stat",   
+    NULL,
+    -1,          
     StatMethods
 };
 
