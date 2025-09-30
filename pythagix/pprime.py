@@ -1,6 +1,5 @@
 from functools import lru_cache
 import random
-from typing import List
 
 
 @lru_cache(maxsize=None)

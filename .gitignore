@@ -30,3 +30,5 @@ Thumbs.db
 *.so
 *.out
 /build/
+
+Test/

@@ -1,8 +1,6 @@
 import math as m
-from functools import lru_cache, reduce
-import random
-from typing import List, Sequence, Union
-from pythagix.prime import is_prime
+from functools import reduce
+from typing import List, Union
 
 Numeric = Union[int, float]
 
