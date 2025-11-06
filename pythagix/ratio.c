@@ -1,5 +1,6 @@
 #include <Python.h>
 
+
 static PyObject* py_gcd(PyObject* a, PyObject* b){
     PyObject* zero = PyLong_FromLong(0);
     PyObject *tmp_a=Py_NewRef(a),*tmp_b=Py_NewRef(b),*t;
